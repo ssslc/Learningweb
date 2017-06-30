@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>焦点图轮播特效</title>
+	<style>
+		 *{margin:0;padding: 0px;text-decoration: none;}
+		#banner_slide{width:600px; height: 400px; overflow:hidden; margin-left:20px; position: relative;margin-top: 20px;
+		/*相对定位被应用于两箭头*/}
+		#list{width: 4200px;height: 400px;z-index: 1;}
+		.arrow{position:absolute;font-size:30px;z-index: 2;color:#fff;background-color: rgba(0, 0, 0, 0.4);width: 40px;height: 40px;text-align: center;top:180px;display: none;}
+		#prev{left: 20px;}
+		#next{right:20px;} 
+		#list { width: 4200px; height: 400px; position: absolute; z-index: 1;}
+        #list img { float: left;}
+		#buttons{position: absolute;height: 10px;width: 100px;z-index: 2;bottom: 20px;left: 250px;}
+		#buttons span{height: 10px;width: 10px;float: left;border: 1px solid #fff;border-radius: 50%;background-color:#fff;margin-left: 5px;}
+		#buttons span.on{background-color:rgba(111, 124, 171, 0.96);} 
+		.arrow:hover {background-color:#000; } 
+		#banner_slide:hover .arrow { display: block;}
+		
+	</style>
+	<script>
+		window.onload=function(){
+			var banner_slide=document.getElementById('banner_slide'),
+			    list=document.getElementById('list'),
+			    buttons=document.getElementById('buttons').getElementsByTagName('span'),
+			    prev=document.getElementById('prev'),
+			    next=document.getElementById('next');
+			var index=1;
+			var animated=false;
+            
+			var showleft=parseInt(list.style.left);
+		    function showbutton(){          //让图片显示对应的buttons变亮
+		    	for(var i=0;i<buttons.length;i++){
+		    		if(buttons[i].className=='on'){
+		    			buttons[i].className='';
+		    			break;
+		    		}
+		    	}
+		    	buttons[index-1].className='on';
+		    }
+			
+			//图片轮播
+			function animate(offset){
+				 animated=true;
+				 //list.style.left=parseInt(list.style.left)+offset+'px';
+                 var newLeft=parseInt(list.style.left)+offset;
+                 var time=300; //总偏移所用的总时间
+                 var interval=10;  //阶段偏移的时间间隔
+                 var speed=offset/(time/interval);  //每次的偏移量
+                 function change(){
+                 	if ((speed<0&&parseInt(list.style.left)>newLeft)||(speed>0 && parseInt(list.style.left)<newLeft)) {
+                         list.style.left=parseInt(list.style.left)+speed+'px';
+                         setTimeout(change,interval);
+                 	}
+                 	else{
+                 		animated=false; 
+                 		 list.style.left=newLeft+'px';
+                 	     if(newLeft>-600){               //如果超过左界限，则换到最右
+				 	        list.style.left= -3000+'px';
+				          }
+				         if(newLeft<-3000){              //若果超过右界限，则换到最左 
+				 	        list.style.left= -600+'px';
+				          }
+
+
+                 	}
+                 }
+                 change();
+			}
+                 
+			next.onclick=function(){
+			    if(animated)   {
+			    	return;
+			    }
+				if(index==5){  //let index in loop
+					index=1;
+				}
+				else{
+                    index+=1;
+				}
+
+			    
+			    showbutton();
+			    if (!animated) {
+				animate(-600);
+			    }
+				// if(parseInt(list.style.left)<-3000){
+				// 	list.style.left=-600+'px';
+				// }				
+			}
+			prev.onclick=function(){
+				if(animated){
+					return;
+				}
+				if(index==1){      //let index in loop
+					index=5;
+				}
+				else{
+                    index-=1;
+				}        
+                showbutton();
+				if (animated==false) {
+				animate(600);
+			    }
+				// if(parseInt(list.style.left)>-600){
+				// 	list.style.left=-3000+'px';
+				// }
+			}
+			for (var i = 0; i < buttons.length; i++) {
+				buttons[i].onclick=function(){
+					if (this.className=='on'){
+						return;
+					}
+					var newIndex=parseInt(this.getAttribute('index'));
+					var offset=-600+(-600*(newIndex-index));
+					animate(offset);
+					index=newIndex;
+                    showbutton();
+				}
+			}
+			var timer=setInterval(next.onclick,3000);
+            banner_slide.onmouseover=function(){
+                    clearInterval(timer);
+            }
+		}
+
+	</script>
+</head>
+<body>
+	<div id="banner_slide" >
+       <div id="list" style="left: -600px;">
+          <img src="content_image/5.jpg" alt="1"/>
+          <img src="content_image/1.jpg" alt="1"/>
+          <img src="content_image/2.jpg" alt="2"/>
+          <img src="content_image/3.jpg" alt="3"/>
+          <img src="content_image/4.jpg" alt="4"/>
+          <img src="content_image/5.jpg" alt="5"/>
+          <img src="content_image/1.jpg" alt="5"/>
+       </div>
+       <div id="buttons">
+           <span index="1" class="on"></span>
+           <span index="2"></span>
+           <span index="3"></span>
+           <span index="4"></span>
+           <span index="5"></span>
+       </div>
+       <a href="javascript:;" id="prev" class="arrow">&lt;</a>
+       <a href="javascript:;" id="next" class="arrow">&gt;</a>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+@charset "utf-8";
+/* CSS Document */
+body,ul,ol,li,p, h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div,dl,dt,dd,input{
+	margin:0;padding:0;color:#000;
+}
+/*h1,h2,h3,h4,h5,h6 { 
+font-size:100%; 
+font-weight:normal; 
+} */
+body{font-size: 12px;width:1920px; background-color: #f3f5f7;}
+img{border:none;}
+li{	list-style: none;}
+input,select,textarea{outline:none; border: none;background: none;}
+textarea{resize:none;}
+a{	text-decoration: none;}
+
+/**/
+
+.clearfix:after {
+    content: '\0020';
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.fl{float:left;}
+.fr{float:right;}
+.comwidth{width: 1200px;margin:0px auto;}
+
+body .bk, div {
+    background-size: cover;
+}
+
+.leftArea{
+	float: left;
+}
+.rightArea{
+	float: right;
+}
+
+body, html,a {
+    font: 14px/1.5 "PingFang SC","微软雅黑","Microsoft YaHei",Helvetica,"Helvetica Neue",Tahoma,Arial,sans-serif;
+}
+
+
+
+/*选项卡hover*/
+.context_card:hover{box-shadow: 0px 4px 10px 6px rgba(7,17,27,.1);}
+.orange{background:linear-gradient(270deg,rgba(255,150,0,.7),#ff9600);}
+.blue{background: linear-gradient(270deg,rgba(75,150,220,.7),#4b96dc);}
+.grbl{background: linear-gradient(270deg,rgba(0,200,200,.7),#00c8c8)}
+.gblack{background: linear-gradient(270deg,rgba(62,69,77,.8),#3e454d);}
+.green{background: linear-gradient(270deg,rgba(0,185,90,.7),#00b95a);}
