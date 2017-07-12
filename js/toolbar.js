@@ -60,22 +60,15 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-    $("#sub_lg3").hover(
+    $("#lg2").hover(
 		function(){
-			$("#lg3").show();
+			$("#lg2").show();
 		},
 		function(){
-			$("#lg3").hide();
+			$("#lg2").hide();
 		}
     )
-    $("#lg3").hover(
-		function(){
-			$("#lg3").show();
-		},
-		function(){
-			$("#lg3").hide();
-		}
-    )
+    
 });
 
 $(document).ready(function(){
