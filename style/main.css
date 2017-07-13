@@ -13,7 +13,7 @@ a.sss{background: url(../images/2.png) no-repeat left center ;padding-left: 58px
 .navigation li{float: left;margin-left: 15px; cursor: pointer;height: 50px;line-height: 50px;}
 .navigation li:hover {color:red;}
 /*右侧搜索*/
-.rightArea{margin-right:450px ;margin-top: 10px; }
+.rightArea{margin-right:150px ;margin-top: 10px; }
 .search{height: 50px;margin-top: 10px;}
 .search_text{height: 30px;line-height: 30px\9;/*css hack \9代表所有的的ie浏览器 */ width: 210px;border: 1px solid ;border-color: #b8b8b8 transparent #ccc #b8b8b8;
 padding:0px 5px;background-color: white;}
@@ -21,16 +21,13 @@ padding:0px 5px;background-color: white;}
 	border: none; font-size: 14px;cursor: pointer;color: white;text-align: center;
 	border-radius:2px;
 }
-/* guide itme*/
 
-.mianbackg{
-	z-index: 2;
-	opacity: .3;
-}
+
+
 
 /*top_banner*/
 .top_banner{z-index: 1;width: 1200px;height: 410px;position:relative; }
-.mianbackg{left: 0px;position: absolute;z-index:-1;}
+.mianbackg{height: 410px; position: absolute;z-index:-1;opacity: .3;background-image: url(../images/7.jpg); }
 .subguide{border-style: solid;border-width: 1px;border-color: #d9dde1;
  position: absolute;left:295px;top: 0;width: 732px;height: 411px;
 z-index: 5;box-shadow: 0 4px 8px 0 rgba(0,0,0,.1);box-sizing: border-box;
